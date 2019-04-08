@@ -35,7 +35,7 @@
                 else // middle
                 {
                     $last=$vitem_set[$x-1]["item"];
-                    $next=$vitem_set[$x+1]["item"]; 
+                    $next=$vitem_set[$x+1]["item"];
                 }
             }
         }
@@ -62,7 +62,7 @@
         $tb.="</div>";
         $tb.=$close_html;
         $tb.="<div title='Next ".$tip_label.": ".$next["categoryName"]." - ".str_replace("'","",$next["itemName"])." - ".str_replace("'","",$next["itemTweet"])."' id='trnext_link'><a href='".build_item_link($next).$url_app."'><div class='tr_icon' style='background-position: -50px -".$next["spriteOffset"]."px;'></div></a></div>";
-        
+
         $tb.="</div>";
         return $tb;
     }
@@ -90,9 +90,9 @@
             $description_display=" selected ";
             $contact_display=" unselected ";
         }
-        $item_type=get_item_type(2);       
+        $item_type=get_item_type(2);
         $vi_d="<div id='vi_details'>";
-        
+
         // builds the buttons for choosing the different sections of item details
         $vi_d.="<div id='vi_opts'>";
         $vi_d.="<a href=''>";
@@ -120,30 +120,30 @@
             $vi_d.="</a>";
         }
         $vi_d.="</div>";
-        
+
         // if js enabled then replace the buttons with javascript buttons
-        $vi_d.=open_script(); 
-        $vi_d.="new_html='<span id=\"vi_tab0\" class=\"vi_opt detail_page_link ".$description_display."\"';\n"; 
-        $vi_d.="new_html+=' onclick=\'change_panel(0)\' ';\n";    
-        $vi_d.="new_html+='>details</span>';\n";  
-        $vi_d.="new_html+='<span id=\"vi_tab1\" class=\"vi_opt detail_page_link unselected\"';\n"; 
-        $vi_d.="new_html+=' onclick=\'change_panel(1)\' ';\n";    
-        $vi_d.="new_html+='>facilities</span>';\n"; 
+        $vi_d.=open_script();
+        $vi_d.="new_html='<span id=\"vi_tab0\" class=\"vi_opt detail_page_link ".$description_display."\"';\n";
+        $vi_d.="new_html+=' onclick=\'change_panel(0)\' ';\n";
+        $vi_d.="new_html+='>details</span>';\n";
+        $vi_d.="new_html+='<span id=\"vi_tab1\" class=\"vi_opt detail_page_link unselected\"';\n";
+        $vi_d.="new_html+=' onclick=\'change_panel(1)\' ';\n";
+        $vi_d.="new_html+='>facilities</span>';\n";
         /*if (mysql_num_rows($updates)>0)
         {
-            $vi_d.="new_html+='<span id=\"vi_tab2\" class=\"vi_opt detail_page_link unselected\"';\n"; 
-            $vi_d.="new_html+=' onclick=\'change_panel(2)\' ';\n";       
+            $vi_d.="new_html+='<span id=\"vi_tab2\" class=\"vi_opt detail_page_link unselected\"';\n";
+            $vi_d.="new_html+=' onclick=\'change_panel(2)\' ';\n";
             $vi_d.="new_html+='>updates</span>';\n";
         }*/
         if ($user_details["subscriber"]==1)
         {
-            $vi_d.="new_html+='<span id=\"vi_tab3\" class=\"vi_opt detail_page_link ".$contact_display."\"';\n"; 
-            $vi_d.="new_html+=' onclick=\'change_panel(3)\' ';\n";       
+            $vi_d.="new_html+='<span id=\"vi_tab3\" class=\"vi_opt detail_page_link ".$contact_display."\"';\n";
+            $vi_d.="new_html+=' onclick=\'change_panel(3)\' ';\n";
             $vi_d.="new_html+='>contact</span>';\n";
         }
-        $vi_d.="document.getElementById('vi_opts').innerHTML=new_html;\n";    
+        $vi_d.="document.getElementById('vi_opts').innerHTML=new_html;\n";
         $vi_d.=close_script();
-        
+
         // default to description, although based on other variables other things can be shown
         $vi_d.="<span id='item_details_content'>";
         if (is_numeric($in["contact_success"])||$_GET["other_details"]=="contact")
@@ -179,19 +179,19 @@
         $ivid.="<span class='ivid_htext'>IMAGES</span>";
         $ivid.="<span class='full_screen_show' onclick='fs_show()'>view full screen gallery</span>";
         $ivid.="</div>";
-        
+
         if (mysql_num_rows($in["item_images"])>2)
         {
             $ivid.="<div id='idir_links'>";
             $ivid.="<div class='ivid_scroll' class='left stop_select' onclick='scroll(\"left\")'>";
             $ivid.="<span class='circle_icon margin_right' style='background-position: -266px -232px;'></span><span class='left orange ivid_link'>previous</span>";
-            $ivid.="</div>";        
+            $ivid.="</div>";
             $ivid.="<div class='ivid_scroll' class='right stop_select' onclick='scroll(\"right\")'>";
             $ivid.="<span id='right' class='circle_icon margin_left' style='background-position: -266px -261px;'></span><span class='right orange ivid_link'>next</span>";
             $ivid.="</div>";
             $ivid.="</div>";
         }
-        
+
         $ivid.="<div id='thumbnail_row'>";
         $ivid.="<div id='slwin_iefix'>";
         $ivid.="<div id='slider_window'>";
@@ -201,7 +201,7 @@
         while ($image=mysql_fetch_array($in["item_images"]))
         {
             $ivid.="<div class='thumbnail_panel'>";
-            $ivid.="<img src='/".$image["largeSquarePath"]."' width='210' height='210'/>";
+            $ivid.="<img src='/".$image["largeSquarePath"]."'/>";
             $ivid.="</div>";
         }
         $ivid.="</div>";
@@ -235,28 +235,28 @@
             // define variables for positioning etc. based on width
             $seek_bar_width=$in["width"]-20-31; // 20 = 2*10px padding, 31 = 21px pause button + 10px margin
             $vid="";
-            
+
             // ie7 play button
             $vid.="<!--[if IE 7]>";
             $vid.="<span id='ie7_play' style='display:none;' onclick='play_video(\"".$in["item"]["videoSRC"]."\",\"".$in["player_name"]."\")'>click here to play video</span>";
             $vid.="<![endif]-->";
-            
+
             // get swf object
-            $vid.="<script type='text/javascript' src='/swfobject.js'></script>";    
+            $vid.="<script type='text/javascript' src='/swfobject.js'></script>";
             $vid.="<div id='".$in["player_name"]."Div'>";
             $vid.="<iframe width='940' height='600' src='http://www.youtube.com/embed/".$in["item"]["videoSRC"]."' frameborder='0' allowfullscreen></iframe>"; // TODO - load embedded video here direct from Youtube in their player, for apple users
             $vid.="</div>";
-            
+
             // load player
-            $vid.="<script type='text/javascript'>\n";          
+            $vid.="<script type='text/javascript'>\n";
             $vid.="var params = { allowScriptAccess: 'always' , wmode: 'opaque' };\n";
             $vid.="var atts = { id: '".$in["player_name"]."' };\n";
-            $vid.="swfobject.embedSWF('http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=".$in["player_name"]."','".$in["player_name"]."Div', '".$in["width"]."', '".$height."', '8', null, null, params, atts);\n";        
+            $vid.="swfobject.embedSWF('http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=".$in["player_name"]."','".$in["player_name"]."Div', '".$in["width"]."', '".$height."', '8', null, null, params, atts);\n";
             $vid.="</script>";
-            
+
             // play button
             $vid.="<div id='".$in["player_name"]."play_button' class='play_button' style='display:none;margin:-".$play_button_up."px 0px 0px ".$play_button_left."px;' onclick='play_video(\"".$in["item"]["videoSRC"]."\",\"".$in["player_name"]."\")'><span id='play_heart_large' style='background-position: -186px -117px;'></span></div>";
-            
+
             // seek bar
             $vid.="<div id='control_bar' style='width:".($in["width"]-20)."px;display:none;'>"; //20 off for padding
             $vid.="<div id='pause_button' onclick='pause_video(\"".$in["player_name"]."\")'>";
@@ -271,12 +271,12 @@
             $vid.="</div>";
             $vid.="</div>";
             $vid.="</div>";
-            
+
             // ie7 recommend
             $vid.="<!--[if IE 7]>";
             $vid.="<span id='ie7_recc'>(you may like to try Google Chrome, a superior internet browser: <a href='http://www.google.co.uk/chrome' target='_blank'>click here to download</a>)</span>";
             $vid.="<![endif]-->";
-            
+
             /*$vid.="<div id='vid_dev_out'>";
             $vid.="<span class='vid_dev_text'>loaded (b): <span id='loaded'></span></span>";
             $vid.="<span class='vid_dev_text'>total (b): <span id='total'></span></span>";
@@ -289,7 +289,7 @@
             $vid.="<span class='vid_dev_text'>pixels played: <span id='played_pixels'></span></span>";
             $vid.="<span class='vid_dev_text'>computed: <span id='computed'></span></span>";
             $vid.="</div>";*/
-        }        
+        }
         return $vid;
     }
     function fs_image($in)
@@ -323,9 +323,9 @@
             $p1_div="<div class='fs_image_pad' style='width:940px;height:".$tp."px;'></div>";
             $p2_div="<div class='fs_image_pad' style='width:940px;height:".$bp."px;'></div>";
         }
-        
+
        //  if ($in["count"]==$in["curr"]) $next_step=0; else $next_step=$in["full_array"][$in["curr"]];
-        
+
         // output each image - here we set the onclick functionality
         /* if ($in["count"]==$in["curr"]||($in["count"]==$in["curr"]-1&&$in["pcount"]%2==0))
         {
@@ -338,7 +338,7 @@
             else
                 $fsi="<div class='fs_image_panel' style='width:".$panelw."px' onclick='fs_shift(".$in["image"]["step"].",".($in["image"]["step"]+1).",".($in["image"]["step"]+2).",".($in["image"]["step"]+1).")'>";
         } */
-        
+
         $fsi="<div class='fs_image_panel' style='width:".$panelw."px'>";
         $fsi.=$p1_div;
         $fsi.="<img class='fs_image' src='/".$in["image"]["display_path"]."' width='".$in["image"]["width"]."' height='".$in["image"]["height"]."'/>";
@@ -370,7 +370,7 @@
                 $vfp.="<div class='ftype_panel'>";
                 $vfp.="<span id='".$fcat["ttdCategoryName"]."ftype_header' class='ftype_header'>".$fcat["ttdCategoryName"]."</span>";
                 $last_top_level=$fcat["ttdCategoryName"];
-            }            
+            }
             $vfp.="<div class='fcat' onclick='toggle_check(\"".$fcat["categoryID"]."\",\"".$curr_cat."\")'>";
             $vfp.="<div class='left fcaticon_div'>".vi_cat_icon($fcat)."</div>";
             if (isset($_SESSION["sparams"]["cats"]))
@@ -445,7 +445,7 @@
         }
         $vit.=stripslashes(cleanup_tinymce_output(json_sanitise($item["itemHTML"])));
         return $vit;
-        
+
     }
     function vi_updates($updates)
     {
@@ -489,7 +489,7 @@
             if (strlen($in["item"]["userPhone"])>0)
                 $cf.='<span class=\"label\"><p>contact number: '.$in["item"]["userPhone"].'</p></span>';
             if (strlen($in["item"]["email"])>0)
-                $cf.='<span class=\"label\"><p>contact email: <a href=\"mailto:'.$in["item"]["email"].'\">'.$in["item"]["email"].'</a></p></span>'; 
+                $cf.='<span class=\"label\"><p>contact email: <a href=\"mailto:'.$in["item"]["email"].'\">'.$in["item"]["email"].'</a></p></span>';
         }
         if (is_numeric($in["contact_success"]))
             if ($in["contact_success"]==1)

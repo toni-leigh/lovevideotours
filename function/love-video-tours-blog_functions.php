@@ -1,6 +1,6 @@
 <?php
     function lvtb_details($in)
-    {     
+    {
         $vi_d="<div id='vi_details'>";
         $vi_d.=vi_text($in["item"]);
         $vi_d.="</div>";
@@ -21,19 +21,19 @@
         $ivid.="<span class='ivid_htext'>IMAGES</span>";
         $ivid.="<span class='full_screen_show' onclick='fs_show()'>view full screen gallery</span>";
         $ivid.="</div>";
-        
+
         if (mysql_num_rows($in["item_images"])>2)
         {
             $ivid.="<div id='idir_links'>";
             $ivid.="<div class='ivid_scroll' class='left stop_select' onclick='scroll(\"left\")'>";
             $ivid.="<span class='circle_icon margin_right' style='background-position: -266px -232px;'></span><span class='left orange ivid_link'>previous</span>";
-            $ivid.="</div>";        
+            $ivid.="</div>";
             $ivid.="<div class='ivid_scroll' class='right stop_select' onclick='scroll(\"right\")'>";
             $ivid.="<span id='right' class='circle_icon margin_left' style='background-position: -266px -261px;'></span><span class='right orange ivid_link'>next</span>";
             $ivid.="</div>";
             $ivid.="</div>";
         }
-        
+
         $ivid.="<div id='thumbnail_row'>";
         $ivid.="<div id='slwin_iefix'>";
         $ivid.="<div id='slider_window'>";
@@ -43,7 +43,7 @@
         while ($image=mysql_fetch_array($in["item_images"]))
         {
             $ivid.="<div class='thumbnail_panel'>";
-            $ivid.="<img src='/".$image["largeSquarePath"]."' width='210' height='210'/>";
+            $ivid.="<img src='/".$image["largeSquarePath"]."'/>";
             $ivid.="</div>";
         }
         $ivid.="</div>";
@@ -53,8 +53,8 @@
         $ivid.="</div>";
         return $ivid;
     }
-    
-    
+
+
     function build_rss_xml()
     {
         $item_type=get_item_type(5);
@@ -75,7 +75,7 @@
         $rss.='<lastBuildDate>'.date("D, d M Y H:i:s",mktime($hour,$min,$second,$month,$day,$year)).' +0000 </lastBuildDate>';
         $rss.='<pubDate>Sat, 08 Oct 2011 17:06:00 +0000 </pubDate>';
         $rss.='<ttl>0</ttl>';
- 
+
         $rss.='<item>';
         $rss.='<title>'.$item["itemName"].'</title>';
         $rss.='<description>'.$item["itemTweet"].'</description>';
@@ -83,7 +83,7 @@
         //$rss.='<guid>'.$item["itemID"].'</guid>';
         $rss.='<pubDate>'.date("D, d M Y H:i:s",mktime($hour,$min,$second,$month,$day,$year)).' +0000 </pubDate>';
         $rss.='</item>';
-        
+
         while ($item=mysql_fetch_array($items))
         {
             $year=substr($item["itemCreated"],0,4);
@@ -100,7 +100,7 @@
             $rss.='<pubDate>'.date("D, d M Y H:i:s",mktime($hour,$min,$second,$month,$day,$year)).' +0000 </pubDate>';
             $rss.='</item>';
         }
-        
+
         $rss.='</channel>';
         $rss.='</rss>';
         $fp=fopen("rss/blog.xml","w");
