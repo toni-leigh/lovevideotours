@@ -1,0 +1,100 @@
+#MIME types for video
+AddType video/ogg .ogv
+AddType video/mp4 .mp4
+AddType video/mp4 .m4v
+AddType video/webm .webm
+
+# compress text, html, javascript, css, xml:
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+
+Options +FollowSymlinks
+ReWriteEngine on
+
+RewriteCond %{HTTP_HOST} ^lovevideotours.co.uk$ [NC]
+RewriteRule ^(.*)$ http://lovevideotours.com/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^www.lovevideotours.co.uk$ [NC]
+RewriteRule ^(.*)$ http://lovevideotours.com/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^www.lovevideotours.com$ [NC]
+RewriteRule ^(.*)$ http://lovevideotours.com/$1 [R=301,L]
+
+#fast track payment redirect
+ReWriteRule ^fast-track/?$ fast_track.php
+#order complete with unique reference ID
+ReWriteRule ^order-complete/([0-9a-z]+)/?$ index.php?element_reference=order-complete&code=$1
+#basic search results page - from header search box
+ReWriteRule ^search-results/([0-9a-zA-Z-%+]+)/?$ index.php?element_reference=search-results&search_term=$1
+ReWriteRule ^search-results/?$ index.php?element_reference=search-results
+#new password page
+ReWriteRule ^new-password/?$ index.php?element_reference=new-password
+
+ReWriteRule ^page-edit/([0-9]+)/? index.php?element_reference=page-edit&page_ID=$1
+
+#supplier pages
+ReWriteRule ^([0-9a-zA-Z-_]+)/?$ index.php?element_reference=$1
+ReWriteRule ^([0-9a-zA-Z-_]+)/blog/?$ index.php?element_reference=$1&page=blog
+ReWriteRule ^([0-9a-zA-Z-_]+)/products/?$ index.php?element_reference=$1&page=products
+ReWriteRule ^([0-9a-zA-Z-_]+)/activity/?$ index.php?element_reference=$1&page=activity
+ReWriteRule ^([0-9a-zA-Z-_]+)/postage/?$ index.php?element_reference=$1&page=postage
+
+#image upload page with item ID
+ReWriteRule ^image-upload/loose-image/remove/? index.php?element_reference=image-upload&loose&remove
+ReWriteRule ^image-upload/([a-z-]+)/([0-9]+)/remove/?$ index.php?element_reference=image-upload&item_type=$1&item_ID=$2&remove
+ReWriteRule ^image-upload/loose-image/? index.php?element_reference=image-upload&loose
+ReWriteRule ^image-upload/([a-z-]+)/([0-9]+)/?$ index.php?element_reference=image-upload&item_type=$1&item_ID=$2
+ReWriteRule ^image-upload/?$ index.php?element_reference=image-upload
+
+ReWriteRule ^control-room/sales-list/([a-zA-Z0-9]+)/([a-z]+)/?$ index.php?element_reference=sales-list&order_by=$1&dir=$2
+ReWriteRule ^control-room/sales-list/([a-zA-Z0-9]+)/?$ index.php?element_reference=sales-list&order_by=$1
+ReWriteRule ^control-room/sales-list/?$ index.php?element_reference=sales-list
+#add / edit items
+ReWriteRule ^control-room/blog/create/?$ index.php?element_reference=blog&admin_divert=create
+ReWriteRule ^control-room/blog/create/([0-9]+)/?$ index.php?element_reference=blog&admin_divert=create&item_ID=$1
+ReWriteRule ^control-room/blog/edit/?$ index.php?element_reference=blog&admin_divert=edit
+ReWriteRule ^control-room/blog/edit/([0-9]+)/?$ index.php?element_reference=blog&admin_divert=edit&item_ID=$1
+#add / edit items
+ReWriteRule ^control-room/events/create/?$ index.php?element_reference=event&admin_divert=create
+ReWriteRule ^control-room/events/edit/?$ index.php?element_reference=event&admin_divert=edit
+ReWriteRule ^control-room/events/edit/([0-9]+)/?$ index.php?element_reference=event&admin_divert=edit&item_ID=$1
+#add / edit items
+ReWriteRule ^control-room/videoitem/create/([0-9]+)/?$ index.php?element_reference=videoitem&admin_divert=create&user_ID=$1
+ReWriteRule ^control-room/videoitem/edit/?$ index.php?element_reference=videoitem&admin_divert=edit
+ReWriteRule ^control-room/videoitem/edit/([0-9]+)/?$ index.php?element_reference=videoitem&admin_divert=edit&item_ID=$1
+#add / edit items
+ReWriteRule ^control-room/love-video-tours-blog/create/?$ index.php?element_reference=love-video-tours-blog&admin_divert=create
+ReWriteRule ^control-room/love-video-tours-blog/edit/?$ index.php?element_reference=love-video-tours-blog&admin_divert=edit
+ReWriteRule ^control-room/love-video-tours-blog/edit/([0-9]+)/?$ index.php?element_reference=love-video-tours-blog&admin_divert=edit&item_ID=$1
+#add / edit users
+ReWriteRule ^control-room/user/create/?$ index.php?element_reference=user&admin_divert=create
+ReWriteRule ^control-room/user/edit/?$ index.php?element_reference=user&admin_divert=edit
+ReWriteRule ^control-room/user/edit/([0-9]+)/?$ index.php?element_reference=user&admin_divert=edit&user_ID=$1
+
+#add / edit items
+ReWriteRule ^([a-z-]+)/create/?$ index.php?element_reference=$1&admin_divert=create
+ReWriteRule ^([a-z-]+)/edit/?$ index.php?element_reference=$1&admin_divert=edit
+ReWriteRule ^([a-z-]+)/edit/([0-9]+)/?$ index.php?element_reference=$1&admin_divert=edit&item_ID=$2
+ReWriteRule ^([a-z-]+)/variations/([0-9]+)/?$ index.php?element_reference=$1&admin_divert=variations&item_ID=$2
+
+#category organised items
+ReWriteRule ^([a-z-]+)/([a-z-]+)/([0-9a-z-]+)/fs/play/?$ index.php?element_reference=$1&category1=$2&filter=$3&mode=full_screen&play=1
+ReWriteRule ^([a-z-]+)/([a-z-]+)/([0-9a-z-]+)/fs/?$ index.php?element_reference=$1&category1=$2&filter=$3&mode=full_screen
+ReWriteRule ^([a-z-]+)/([0-9a-z-]+)/fs/play/?$ index.php?element_reference=$1&filter=$2&mode=full_screen&play=1
+ReWriteRule ^([a-z-]+)/([0-9a-z-]+)/fs/?$ index.php?element_reference=$1&filter=$2&mode=full_screen
+ReWriteRule ^([a-z-]+)/([a-z-]+)/([a-z-]+)/([a-z-]+)/([0-9]+)/?$ index.php?element_reference=$1&category1=$2&category2=$3&category3=$4&page=$5
+ReWriteRule ^([a-z-]+)/([a-z-]+)/([a-z-]+)/([0-9]+)/?$ index.php?element_reference=$1&category1=$2&category2=$3&page=$4
+ReWriteRule ^([a-z-]+)/([a-z-]+)/([0-9]+)/?$ index.php?element_reference=$1&category1=$2&page=$3
+
+ReWriteRule ^([a-z-]+)/([a-z-]+)/([a-z-]+)/([a-z-]+)/([0-9a-z-]+)/?$ index.php?element_reference=$1&category1=$2&category2=$3&category3=$4&filter=$5
+ReWriteRule ^([a-z-]+)/([a-z-]+)/([a-z-]+)/([0-9a-z-]+)/?$ index.php?element_reference=$1&category1=$2&category2=$3&filter=$4
+ReWriteRule ^([a-z-]+)/([a-z-]+)/([0-9a-z-]+)/?$ index.php?element_reference=$1&category1=$2&filter=$3
+#uncategorised items - simple item sets
+ReWriteRule ^([a-z-]+)/([0-9a-z-]+)/?$ index.php?element_reference=$1&filter=$2
+#users or pages
+ReWriteRule ^([0-9a-zA-Z-_]+)/?$ index.php?element_reference=$1

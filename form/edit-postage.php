@@ -1,0 +1,35 @@
+<?php
+    echo "<div id='instruction_panel' class='right'>";
+    echo    "<p>Here you set your postage costs based on either item count or weight brackets. The when you add product variations you can add values to the variations so that correct postage cost is used when the customers card is charged.</p>";
+    echo    "<p>You have to use at least one or the other, if you use both you will be given the choice when creating product variations.</p>";
+    echo    "<p>e.g. you might create two weight based postage brackets, with packages weighing 0-1000g costing £5 to send and those weighing 1001g-5000g costing £10 to send.</p>";
+    echo    "<p>Or you might create two item count based postage brackets, with packages containing 1-5 items £2.50 to send and those containing 6-10 items £4.50 to send.</p>";
+    echo    "<p>The detail and range is up to you and leaving a maximum value empty will set it to infinity.</p>";
+    echo    "<p>There is also an optional value at the top which is an order total over which you give postage for free. This will override any other costs defined if the order is higher than a certain value</p>";
+    echo "</div>";
+    echo "<div id='main_form' class='left'>";
+    echo    "<div id='threshold_panel' class='postage_panel left'>";
+    echo        "Set the threshold above which free postage will automatically be offered. <span class='highlight'>Setting this to £0 will offer free postage on all orders!</span> Current threshold is <span id='postage_threshold' class='highlight'>".format_price($_SESSION["user"]["postageThreshold"])."</span>";
+    echo        "<span id='threshold_entry' class='full_screen_width'>";
+    echo            "<span class='button right' onclick='save_threshold()'>set threshold</span>";
+    echo            "<input id='p_thresh' class='text_field right' type='text' name='p_thresh' value='".$_SESSION["user"]["postageThreshold"]."'/>";
+    echo        "</span>";
+    echo    "</div>";
+    echo    "<div id='weight_panel' class='postage_panel left'>";
+    echo        "<div id='weight_panel_header' class='postage_panel_header full_screen_width'>";
+    echo            "Set weight based brackets here (in grams)";
+    echo        "</div>";
+    echo        "<div id='weight_brackets'>";
+    echo            bracket_updater(array("brackets"=>$weight_brackets,"calc_type"=>"weight"));
+    echo        "</div>";
+    echo    "</div>";
+    echo    "<div id='itemcount_panel' class='postage_panel left'>";
+    echo        "<div id='itemcount_panel_header' class='postage_panel_header full_screen_width'>";
+    echo            "Set item count based brackets here";
+    echo        "</div>";
+    echo        "<div id='item_brackets'>";
+    echo            bracket_updater(array("brackets"=>$itemcount_brackets,"calc_type"=>"item"));
+    echo        "</div>";
+    echo    "</div>";
+    echo "</div>";
+?>

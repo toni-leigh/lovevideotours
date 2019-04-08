@@ -1,0 +1,64 @@
+/* RESETS */
+/*reset browser applied css*/ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
+/* HTML5 display-role reset for older browsers */ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: '';content: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+
+/* GLOBALS - ON TAG TYPE */
+html {overflow-y: scroll;background-color:#e2dad4;color:#55595a;}
+html img {border:none;}
+body {margin:0px;font-size:14px;}
+a{outline:none;color:#55595a;font-weight:bold;}
+a:hover{color:#00b8ff;}
+h2{font-weight:bold;margin:5px 0px;}
+
+/* GLOBAL CLASSES */
+    /* DEV */
+    .include_details{float:left;height:10px;font-size:0.8em;}
+    .dd_q_out{width:100%;float:left;color:#146;}
+    .dd_a_out{width:100%;float:left;color:#164;}
+    .dd_v_out{width:100%;float:left;color:#614;}
+    
+    /* BASIC FORMATTING */
+    .bold{font-weight:bold;}
+    .full_screen_width{width:100%;float:left;}
+    
+/* ITEM */
+    /* FRONT END */
+        /* LIST */
+            .item_row4{width:960px;float:left;}
+            .item_panel{width:200px;height:280px;float:left;border:2px dotted #00c100;margin:10px;padding:8px;}
+            .basket_button{width:198px;float:left;}
+        /* DETAILS */
+
+/* FORM STYLES */
+#form_test{}
+.form_centre{width:700px;float:left;border:1px dotted #000080;margin:20px 110px;padding:9px;}
+.form_partition{width:100%;float:left;margin-bottom:20px;}
+.form_field_header_error, .form_field_header{width:100%;float:left;margin:5px 0px;}
+.form_field_input_error, .form_field_input{width:100%;float:left;}
+.form_field_input_error input, .form_field_input input,
+.form_field_input_error textarea, .form_field_input textarea{width:100%;}
+
+/* SITE FRAME */
+#holder{width:980px;margin:0px auto 10px;}
+header, #content, nav, #comments, footer{width:960px;float:left;border:2px dotted #00b8ff;margin:10px 0px;padding:8px;background-color:#ece5de;}
+#search_form{width:200px;float:right;border:2px dotted #00c100;margin:10px;padding:8px;}
+#engage_form_display{width:440px;float:right;border:2px dotted #00c100;margin:10px;padding:8px;}
+.nav{}
+.nav:hover{color:#00b8ff;}
+.nav_sel{}
+
+.address_field_header, .address_field_header_error, .address_field_input, .address_field_input_error{width:100%;float:left;}
+
+/* PLUGIN STYLES */
+    /* image thumbnail creation */
+        /*imgAreaSelect default style - necessary styles*/.imgareaselect-border1 {background: url(border-v.gif) repeat-y left top;}.imgareaselect-border2 {background: url(border-h.gif) repeat-x left top;
+        }.imgareaselect-border3 {background: url(border-v.gif) repeat-y right top;}.imgareaselect-border4 {background: url(border-h.gif) repeat-x left bottom;}.imgareaselect-border1, .imgareaselect-border2,
+        .imgareaselect-border3, .imgareaselect-border4 {opacity: 0.5;filter: alpha(opacity=50);}.imgareaselect-handle {background-color: #fff;border: solid 1px #000;opacity: 0.5;filter: alpha(opacity=50);}
+        .imgareaselect-outer {background-color: #000;opacity: 0.5;filter: alpha(opacity=50);}.imgareaselect-selection {}
+    /* plupload */
+    /* tinymce */

@@ -1,0 +1,4 @@
+[27-Jan-2012 15:52:53] PHP Fatal error:  Call to undefined function  get_images() in /home/tastydev/public_html/lovevideotours/function/item_functions.php on line 237
+[27-Jan-2012 15:53:38] PHP Fatal error:  Call to undefined function  vi_cat_icon() in /home/tastydev/public_html/lovevideotours/function/item_functions.php on line 242
+[27-Jan-2012 19:50:00] PHP Warning:  mysql_data_seek() [<a href='function.mysql-data-seek'>function.mysql-data-seek</a>]: Offset 0 is invalid for MySQL result index 9 (or the query data is unbuffered) in /home/tastydev/public_html/lovevideotours/function/videoitem_functions.php on line 314
+[30-Jan-2012 11:08:06] PHP Warning:  mysql_data_seek() [<a href='function.mysql-data-seek'>function.mysql-data-seek</a>]: Offset 0 is invalid for MySQL result index 9 (or the query data is unbuffered) in /home/tastydev/public_html/lovevideotours/function/videoitem_functions.php on line 316
